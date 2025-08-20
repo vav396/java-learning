@@ -1,3 +1,5 @@
+package encapsulation;
+
 import java.util.Arrays;
 
 public class Student {
