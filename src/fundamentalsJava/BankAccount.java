@@ -4,12 +4,9 @@ public class BankAccount {
     private String owner;
     private double balance;
 
-    public double BankAccount(String owner, double balance) {
+    public BankAccount(String owner, double balance) {
         this.owner = owner;
-        if (balance <=  0) {
-            return 0.00;
-        }
-        return this.balance = balance;
+        this.balance = balance;
     }
 
     public String getOwner() {
@@ -18,5 +15,27 @@ public class BankAccount {
 
     public double getBalance() {
         return balance;
+    }
+
+    void deposit(double amount){
+        if (amount <= 0) {
+            System.out.println("Ноль положить нельзя");
+        } else {
+            this.balance += amount;
+        }
+    }
+
+    void withdraw(double amount){
+        if (amount <= 0) {
+            System.out.println("Ноль снять нельзя");
+        } else if (amount >balance) {
+            System.out.println("Недостаточно средств");
+        } else {
+            this.balance -= amount;
+        }
+    }
+
+    void displayInfo(){
+        System.out.println("Владелец: " + owner + " Баланс: " + balance + " руб.");
     }
 }
