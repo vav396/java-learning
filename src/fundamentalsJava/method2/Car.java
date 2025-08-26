@@ -1,16 +1,20 @@
-package fundamentalsJava;
+package fundamentalsJava.method2;
+
+import java.util.Objects;
 
 public class Car {
     private String model;
     private int year;
     private String color;
-    boolean isRunning;
+    private boolean isRunning;
+    private static int totalCars = 0;
 
-    public Car(String model, int year, String color, boolean isRunning) {
+    public Car(String model, int year, String color) {
         this.model = model;
         this.year = year;
         this.color = color;
-        this.isRunning = isRunning;
+        this.isRunning = false;
+        totalCars++;
     }
 
     public String getModel() {
@@ -18,7 +22,7 @@ public class Car {
     }
 
     public void setModel(String model) {
-        if (model != null || !model.isEmpty()) {
+        if (model != null && !model.isEmpty()) {
             this.model = model;
         } else {
             System.out.println("Модель не может быть пустой");
@@ -34,7 +38,7 @@ public class Car {
     }
 
     public void setColor(String color) {
-        if (color != null || !color.isEmpty()) {
+        if (color != null && !color.isEmpty()) {
             this.color = color;
         } else {
             System.out.println("Цвет не может быть пустым");
@@ -45,30 +49,56 @@ public class Car {
         return isRunning;
     }
 
-    void startEngine(){
-        if (isRunning){
-            System.out.println("Машина уже заведена");
-        }else {
+    public void startEngine() {
+        if (!isRunning) {
             isRunning = true;
             System.out.println("Машина заведена");
+        } else {
+            System.out.println("Машина уже заведена.");
         }
     }
 
-    void stopEngine(){
-        if (isRunning){
+    public void stopEngine() {
+        if (isRunning) {
             isRunning = false;
             System.out.println("Машина остановлена");
-        }else {
+        } else {
             System.out.println("Машина уже остановлена");
         }
     }
 
-    void displayInfo(){
-        if (isRunning){
+    public void displayInfo() {
+        if (isRunning) {
             System.out.println("Модель: " + model + "\nГод выпуска: " + year + "\nЦвет: " + color + "\nСостояние: заведена");
-        }else {
+        } else {
             System.out.println("Модель: " + model + "\nГод выпуска: " + year + "\nЦвет: " + color + "\nСостояние: остановлена");
         }
     }
 
+    public static int getTotalCars() {
+        return totalCars;
+    }
+
+    @Override
+    public String toString() {
+        return "Car{" +
+                "model='" + model + '\'' +
+                ", year=" + year +
+                ", color='" + color + '\'' +
+                ", isRunning=" + isRunning +
+                '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Car car = (Car) o;
+        return year == car.year && isRunning == car.isRunning && Objects.equals(model, car.model) && Objects.equals(color, car.color);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(model, year, color, isRunning);
+    }
 }
