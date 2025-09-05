@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/zadach.iml" filepath="$PROJECT_DIR$/zadach.iml" />
+      <module fileurl="file://$PROJECT_DIR$/основы.iml" filepath="$PROJECT_DIR$/основы.iml" />
     </modules>
   </component>
 </project>
