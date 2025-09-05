@@ -1,5 +1,7 @@
 package fundamentalsJava.method1.Practic;
 
+
+
 public class Student {
     private String name;
     private int classNumber;
